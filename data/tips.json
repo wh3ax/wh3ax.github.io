@@ -2,7 +2,6 @@
   {
     "topic": "Parental Controls",
     "category": "Parental",
-    "risk": "Low",
     "description": "Use built-in parental controls on consoles, PCs and mobile devices to limit play time and content.",
     "actions": "Set age-appropriate restrictions, enable content filters, and schedule play hours. Use platform guides (Xbox/PlayStation/Nintendo, Epic).",
     "resources": "https://www.nspcc.org.uk/keeping-children-safe/online-safety/parental-controls/"
@@ -10,7 +9,6 @@
   {
     "topic": "Account Privacy (Roblox / Fortnite)",
     "category": "Gaming",
-    "risk": "Moderate",
     "description": "Gaming accounts often default to social and friend-based features that expose children to strangers.",
     "actions": "Set profiles to private, restrict who can message or join games, and disable friend requests from unknown users.",
     "resources": "https://en.help.roblox.com/hc/en-us/articles/203313410-Privacy-Settings"
@@ -18,7 +16,6 @@
   {
     "topic": "Voice & Text Chat Safety (Discord, Fortnite)",
     "category": "Chat",
-    "risk": "High",
     "description": "Voice and text chat can expose children to abusive language, strangers, or grooming attempts.",
     "actions": "Disable voice/text chat for young accounts, use parental controls to limit who can contact your child, and teach them to leave uncomfortable conversations and report users.",
     "resources": "https://discord.com/safety/360044149811"
@@ -26,7 +23,6 @@
   {
     "topic": "In‑App Purchases & Microtransactions",
     "category": "Payments",
-    "risk": "Moderate",
     "description": "Games often include purchases that can lead to accidental spending or pressure to buy.",
     "actions": "Require a parent password or approval for purchases, disable saved payment methods, and review receipts regularly.",
     "resources": "https://www.ftc.gov/your-consumer-rights/children-and-consumers"
@@ -34,7 +30,6 @@
   {
     "topic": "Stranger Interaction",
     "category": "Social",
-    "risk": "High",
     "description": "Players may encounter strangers who ask personal questions or try to move conversations off-platform.",
     "actions": "Teach children not to share personal details (full name, address, school), to block and report suspicious users, and to get a parent's help if pressured.",
     "resources": "https://www.netsmartzkids.org/"
@@ -42,7 +37,6 @@
   {
     "topic": "Screen Time & Balance",
     "category": "Parental",
-    "risk": "Moderate",
     "description": "Excessive play can affect sleep, schoolwork, and social development.",
     "actions": "Agree on daily/weekly limits, encourage breaks, and keep devices in shared family spaces during younger ages.",
     "resources": "https://www.commonsensemedia.org/screen-time"
@@ -50,7 +44,6 @@
   {
     "topic": "Report & Safety Tools",
     "category": "Safety",
-    "risk": "Low",
     "description": "Most platforms provide in-app reporting, block features, and safety centers for parents and kids.",
     "actions": "Familiarize yourself with reporting flows on platforms you use (Roblox, Discord, Epic), save incident details, and escalate to platform support when needed.",
     "resources": "https://www.saferinternet.org.uk/"
@@ -58,7 +51,6 @@
   {
     "topic": "Account Security for Children",
     "category": "Accounts",
-    "risk": "Moderate",
     "description": "Children's accounts can be targeted or hijacked; recovery can be difficult without parental contact info.",
     "actions": "Use strong, unique passwords, enable two-factor auth where available, and register recovery email/phone under a parent's account.",
     "resources": "https://www.getsafeonline.org/"
@@ -66,7 +58,6 @@
   {
     "topic": "Moderation & Community Standards",
     "category": "Community",
-    "risk": "Moderate",
     "description": "Understand each game's moderation level — some communities are heavily moderated while others are not.",
     "actions": "Choose servers, games, and communities with active moderation, and review community rules before joining.",
     "resources": "https://www.commonsensemedia.org/"
@@ -74,7 +65,6 @@
   {
     "topic": "Location & Camera Sharing",
     "category": "Privacy",
-    "risk": "High",
     "description": "Sharing photos or live-streaming can reveal location or identifying details unintentionally.",
     "actions": "Disable location sharing, avoid posting images showing identifiable places or school uniforms, and review privacy for streaming platforms.",
     "resources": "https://www.childnet.com/parents-and-carers/"

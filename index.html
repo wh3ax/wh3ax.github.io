@@ -13,7 +13,7 @@
         <div class="site-hero">
           <div>
             <h1>Online Safety Hub</h1>
-            <p class="tagline">Practical tips, risks and actions to keep children and families safer while using games and chat apps (Roblox, Discord, Fortnite, and more).</p>
+            <p class="tagline">Practical tips and guidance to keep children and families safer while using games and chat apps (Roblox, Discord, Fortnite, and more).</p>
             <p class="hero-sub">Search, filter, and export curated safety tips. No public editing allowed — modify `data/tips.json` in the repository to update content.</p>
           </div>
         </div>
@@ -29,15 +29,7 @@
             <input id="search-input" type="search" placeholder="Search topic, description, actions..." aria-label="Search tips">
           </label>
 
-          <label>
-            Risk
-            <select id="risk-filter" aria-label="Filter by risk level">
-              <option value="">All</option>
-              <option>Low</option>
-              <option>Moderate</option>
-              <option>High</option>
-            </select>
-          </label>
+          <!-- Risk column removed to keep guidance simple and family-friendly -->
 
           <label>
             Category
@@ -70,7 +62,6 @@
             <tr>
               <th data-key="topic" scope="col" tabindex="0">Topic</th>
               <th data-key="category" scope="col">Category</th>
-              <th data-key="risk" scope="col">Risk</th>
               <th data-key="description" scope="col">Description</th>
               <th data-key="actions" scope="col">Recommended actions</th>
               <th data-key="resources" scope="col">Resources</th>

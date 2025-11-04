@@ -8,7 +8,6 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   let tips = [];
 
   const searchInput = document.getElementById('search-input');
-  const riskFilter = document.getElementById('risk-filter');
   const categoryFilter = document.getElementById('category-filter');
   const clearBtn = document.getElementById('clear-btn');
   const exportBtn = document.getElementById('export-btn');
@@ -34,7 +33,6 @@ document.addEventListener('DOMContentLoaded', async ()=>{
       tr.innerHTML = `
         <td>${escapeHtml(t.topic)}</td>
         <td>${escapeHtml(t.category)}</td>
-        <td>${riskBadge(t.risk)}</td>
         <td>${escapeHtml(t.description)}</td>
         <td>${escapeHtml(t.actions)}</td>
         <td>${t.resources ? `<a href="${escapeAttr(t.resources)}" target="_blank" rel="noopener">Link</a>` : ''}</td>
@@ -47,36 +45,27 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   function escapeHtml(str){ return String(str||'').replace(/[&<>\"]/g, (c)=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c])); }
   function escapeAttr(str){ return encodeURI(String(str||'')); }
 
-  function riskBadge(risk){
-    const r = normalize(risk || '');
-    const cls = r.includes('low') ? 'risk-low' : r.includes('high') ? 'risk-high' : 'risk-moderate';
-    return `<span class="badge ${cls}">${escapeHtml(risk||'')}</span>`;
-  }
-
-  function matchesRowObj(obj, text, risk, category){
-    const hay = [obj.topic, obj.category, obj.risk, obj.description, obj.actions, obj.resources].join(' ').toLowerCase();
+  function matchesRowObj(obj, text, category){
+    const hay = [obj.topic, obj.category, obj.description, obj.actions, obj.resources].join(' ').toLowerCase();
     if(text && !hay.includes(text.toLowerCase())) return false;
-    if(risk && obj.risk.toLowerCase() !== risk.toLowerCase()) return false;
     if(category && obj.category.toLowerCase() !== category.toLowerCase()) return false;
     return true;
   }
 
   function filter(){
     const q = searchInput.value.trim();
-    const r = riskFilter.value;
     const c = categoryFilter.value;
     Array.from(tbody.rows).forEach((row, i)=>{
       const obj = tips[i];
       if(!obj) { row.style.display='none'; return; }
-      row.style.display = matchesRowObj(obj, q, r, c) ? '' : 'none';
+      row.style.display = matchesRowObj(obj, q, c) ? '' : 'none';
     });
   }
 
   searchInput.addEventListener('input', filter);
-  riskFilter.addEventListener('change', filter);
   categoryFilter.addEventListener('change', filter);
 
-  clearBtn.addEventListener('click', ()=>{ searchInput.value=''; riskFilter.value=''; categoryFilter.value=''; filter(); searchInput.focus(); });
+  clearBtn.addEventListener('click', ()=>{ searchInput.value=''; categoryFilter.value=''; filter(); searchInput.focus(); });
 
   // (edit/add UI removed to prevent public modification)
 
@@ -93,7 +82,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   let sortState = {idx:-1,dir:1};
 
   function compareObj(a,b,idx){
-    const keys = ['topic','category','risk','description','actions','resources'];
+    const keys = ['topic','category','description','actions','resources'];
     const key = keys[idx] || keys[0];
     const av = (a[key]||'').toString().toLowerCase();
     const bv = (b[key]||'').toString().toLowerCase();
