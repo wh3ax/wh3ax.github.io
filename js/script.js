@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   const categoryFilter = document.getElementById('category-filter');
   const clearBtn = document.getElementById('clear-btn');
   const exportBtn = document.getElementById('export-btn');
+  const categoryChipsContainer = document.getElementById('category-chips');
 
   async function loadData(){
     try{
@@ -40,6 +41,8 @@ document.addEventListener('DOMContentLoaded', async ()=>{
       tbody.appendChild(tr);
     });
     filter();
+    // Refresh chips selection (if any)
+    syncChipsWithSelect();
   }
 
   function escapeHtml(str){ return String(str||'').replace(/[&<>\"]/g, (c)=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;' }[c])); }
@@ -66,6 +69,11 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   categoryFilter.addEventListener('change', filter);
 
   clearBtn.addEventListener('click', ()=>{ searchInput.value=''; categoryFilter.value=''; filter(); searchInput.focus(); });
+
+  // Clear should also clear chips visual state
+  clearBtn.addEventListener('click', ()=>{
+    Array.from(document.querySelectorAll('.chip.selected')).forEach(c=>c.classList.remove('selected'));
+  });
 
   // (edit/add UI removed to prevent public modification)
 
@@ -100,5 +108,45 @@ document.addEventListener('DOMContentLoaded', async ()=>{
 
   // Initial load
   await loadData();
+
+  // Build quick category chips from the <select> options
+  function buildCategoryChips(){
+    if(!categoryChipsContainer) return;
+    categoryChipsContainer.innerHTML = '';
+    Array.from(categoryFilter.options).forEach(opt=>{
+      if(!opt.value) return; // skip the 'All' option
+      const btn = document.createElement('button');
+      btn.type = 'button';
+      btn.className = 'chip';
+      btn.textContent = opt.textContent;
+      btn.dataset.value = opt.value;
+      btn.addEventListener('click', ()=>{
+        // toggle selection
+        const isSelected = btn.classList.toggle('selected');
+        if(isSelected){
+          // set the select and filter
+          categoryFilter.value = btn.dataset.value;
+        }else{
+          categoryFilter.value = '';
+        }
+        filter();
+        // keep only one chip selected at a time
+        Array.from(categoryChipsContainer.children).forEach(c=>{ if(c!==btn) c.classList.remove('selected'); });
+      });
+      categoryChipsContainer.appendChild(btn);
+    });
+  }
+
+  function syncChipsWithSelect(){
+    if(!categoryChipsContainer) return;
+    const val = categoryFilter.value || '';
+    Array.from(categoryChipsContainer.children).forEach(ch=>{
+      if(ch.dataset.value && ch.dataset.value.toLowerCase() === val.toLowerCase()) ch.classList.add('selected');
+      else ch.classList.remove('selected');
+    });
+  }
+
+  // Build chips once the DOM and select exist
+  buildCategoryChips();
 
 });
