@@ -1,0 +1,42 @@
+[
+  {
+    "topic": "Two-factor Authentication",
+    "category": "Accounts",
+    "risk": "Low",
+    "description": "Enable an extra verification step for important accounts.",
+    "actions": "Use TOTP authenticator apps; avoid SMS if possible.",
+    "resources": "https://authy.com/"
+  },
+  {
+    "topic": "Strong Passwords",
+    "category": "Passwords",
+    "risk": "Moderate",
+    "description": "Use unique, long passwords for each account.",
+    "actions": "Use a password manager and enable auto-fill safely.",
+    "resources": "https://www.passwords.example/"
+  },
+  {
+    "topic": "Public Wi‑Fi",
+    "category": "Devices",
+    "risk": "High",
+    "description": "Untrusted networks can expose your traffic to attackers.",
+    "actions": "Use a VPN and avoid sensitive actions on public Wi‑Fi.",
+    "resources": "https://www.vpn.example/"
+  },
+  {
+    "topic": "Phishing Emails",
+    "category": "Social",
+    "risk": "High",
+    "description": "Fraudulent messages try to trick you into revealing data.",
+    "actions": "Verify senders, hover links, report suspicious messages.",
+    "resources": "https://www.phishing.example/"
+  },
+  {
+    "topic": "Privacy Settings",
+    "category": "Privacy",
+    "risk": "Moderate",
+    "description": "Default settings often overshare personal data.",
+    "actions": "Review app/site privacy settings regularly.",
+    "resources": "https://www.privacy.example/"
+  }
+]

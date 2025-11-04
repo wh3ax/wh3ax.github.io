@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Online Safety Hub</title>
+    <link rel="stylesheet" href="/css/styles.css">
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container">
+        <h1>Online Safety Hub</h1>
+        <p class="tagline">Practical tips, risks and actions to stay safer online.</p>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="controls" aria-labelledby="filters-heading">
+        <h2 id="filters-heading">Filter tips</h2>
+        <div class="filters-row">
+          <label class="search">
+            Search
+            <input id="search-input" type="search" placeholder="Search topic, description, actions..." aria-label="Search tips">
+          </label>
+
+          <label>
+            Risk
+            <select id="risk-filter" aria-label="Filter by risk level">
+              <option value="">All</option>
+              <option>Low</option>
+              <option>Moderate</option>
+              <option>High</option>
+            </select>
+          </label>
+
+          <label>
+            Category
+            <select id="category-filter" aria-label="Filter by category">
+              <option value="">All</option>
+              <option>Accounts</option>
+              <option>Privacy</option>
+              <option>Passwords</option>
+              <option>Devices</option>
+              <option>Social</option>
+            </select>
+          </label>
+
+          <div class="controls-actions">
+            <button id="clear-btn" type="button">Clear</button>
+            <button id="export-btn" type="button">Export JSON</button>
+            <small class="hint">Click table headers to sort</small>
+          </div>
+        </div>
+      </section>
+
+      <section class="table-wrap">
+        <table id="tips-table" class="tips-table" role="table">
+          <caption class="sr-only">List of online safety tips</caption>
+          <thead>
+            <tr>
+              <th data-key="topic" scope="col" tabindex="0">Topic</th>
+              <th data-key="category" scope="col">Category</th>
+              <th data-key="risk" scope="col">Risk</th>
+              <th data-key="description" scope="col">Description</th>
+              <th data-key="actions" scope="col">Recommended actions</th>
+              <th data-key="resources" scope="col">Resources</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- rows will be populated from /data/tips.json -->
+          </tbody>
+        </table>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <small>Made with care — use as guidance, not legal advice.</small>
+      </div>
+    </footer>
+
+    <script src="/js/script.js" defer></script>
+  </body>
+</html>
