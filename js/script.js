@@ -58,11 +58,28 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   function filter(){
     const q = searchInput.value.trim();
     const c = categoryFilter.value;
+    let firstVisibleRow = null;
+    
     Array.from(tbody.rows).forEach((row, i)=>{
       const obj = tips[i];
       if(!obj) { row.style.display='none'; return; }
-      row.style.display = matchesRowObj(obj, q, c) ? '' : 'none';
+      const isVisible = matchesRowObj(obj, q, c);
+      row.style.display = isVisible ? '' : 'none';
+      if (isVisible && !firstVisibleRow) {
+        firstVisibleRow = row;
+      }
     });
+
+    // Smooth scroll to first matching result
+    if (firstVisibleRow && (q || c)) {
+      const tableWrap = document.querySelector('.table-wrap');
+      if (tableWrap) {
+        tableWrap.scrollTo({
+          top: firstVisibleRow.offsetTop - tableWrap.offsetTop - 20,
+          behavior: 'smooth'
+        });
+      }
+    }
   }
 
   searchInput.addEventListener('input', filter);

@@ -16,8 +16,43 @@
   --shadow-lg: 0 8px 24px rgba(0,0,0,0.4);
   --gradient-surface: linear-gradient(180deg, var(--glass), transparent);
 }
-*{box-sizing:border-box}
-html,body{height:100%}
+* {box-sizing:border-box}
+
+html {
+  scroll-behavior: smooth;
+}
+
+html, body {
+  height: 100%;
+}
+
+/* Smooth scrolling for table container */
+.table-wrap {
+  scroll-behavior: smooth;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent) transparent;
+}
+
+/* Custom scrollbar styling */
+.table-wrap::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.table-wrap::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.table-wrap::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 4px;
+  opacity: 0.5;
+}
+
+.table-wrap::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-2);
+}
 
 /* Use a single solid background color for simplicity */
 .background-pattern{display:none}
@@ -182,6 +217,7 @@ button{padding:.45rem .7rem;border-radius:8px;border:1px solid rgba(255,255,255,
   top: 0;
   background: var(--bg-1);
   backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   padding: 1rem 1.25rem;
   text-align: left;
   font-weight: 600;
@@ -189,7 +225,8 @@ button{padding:.45rem .7rem;border-radius:8px;border:1px solid rgba(255,255,255,
   cursor: pointer;
   color: var(--accent);
   border-bottom: 2px solid var(--glass);
-  transition: color 0.2s ease;
+  transition: all 0.2s ease;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.02);
 }
 .tips-table thead th:hover {
   color: #fff;
