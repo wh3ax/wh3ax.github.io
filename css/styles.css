@@ -107,6 +107,21 @@ body{
   box-shadow: var(--shadow-sm);
 }
 
+/* Site banner */
+.site-banner{background:linear-gradient(90deg, rgba(125,211,252,0.06), rgba(96,165,250,0.03));border-bottom:1px solid rgba(255,255,255,0.02)}
+.site-banner .banner-inner{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.85rem 1.25rem}
+.banner-content{color:var(--muted);display:flex;gap:.6rem;align-items:center}
+.banner-content strong{color:var(--accent);font-weight:700}
+.banner-actions{display:flex;gap:.5rem;align-items:center}
+.btn{padding:.45rem .7rem;border-radius:8px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:inherit;cursor:pointer}
+.btn.plain{background:transparent}
+.site-banner .btn.primary{background:linear-gradient(90deg,var(--accent),var(--accent-2));color:var(--text-on-accent);border:0}
+
+@media (max-width:700px){
+  .site-banner .banner-inner{flex-direction:column;align-items:flex-start}
+  .banner-actions{width:100%;justify-content:space-between}
+}
+
 .controls h2 {
   font-size: 1.1rem;
   margin: 0 0 1.25rem 0;
