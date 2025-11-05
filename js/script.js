@@ -125,21 +125,7 @@ document.addEventListener('DOMContentLoaded', async ()=>{
 
   // Initial load
   await loadData();
-
-  // Banner dismissal (persist in localStorage)
-  const banner = document.querySelector('.site-banner');
-  const bannerClose = document.getElementById('banner-close');
-  try{
-    if(banner && localStorage.getItem('bannerDismissed')==='1'){
-      banner.style.display='none';
-    }
-    if(bannerClose){
-      bannerClose.addEventListener('click', ()=>{
-        banner.style.display='none';
-        try{ localStorage.setItem('bannerDismissed','1'); }catch(e){}
-      });
-    }
-  }catch(e){/* ignore */}
+ 
 
   // Build quick category chips from the <select> options
   function buildCategoryChips(){
