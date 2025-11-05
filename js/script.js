@@ -3,6 +3,52 @@
    is provided for persistence by copying/saving the output.
 */
 document.addEventListener('DOMContentLoaded', async ()=>{
+  // Smooth cursor implementation
+  const cursorDot = document.querySelector('.cursor-dot');
+  const cursorOutline = document.querySelector('.cursor-outline');
+  
+  let cursorPos = { x: 0, y: 0 }; // Current cursor position
+  let dotPos = { x: 0, y: 0 }; // Dot position
+  let outlinePos = { x: 0, y: 0 }; // Outline position
+  
+  // Track mouse position
+  document.addEventListener('mousemove', e => {
+    cursorPos.x = e.clientX;
+    cursorPos.y = e.clientY;
+    // Show cursors when mouse moves
+    cursorDot.style.opacity = '1';
+    cursorOutline.style.opacity = '1';
+  });
+  
+  // Smooth animation function
+  function animate() {
+    // Smooth following effect for dot
+    dotPos.x += (cursorPos.x - dotPos.x) * 0.2;
+    dotPos.y += (cursorPos.y - dotPos.y) * 0.2;
+    
+    // Slightly delayed following for outline
+    outlinePos.x += (cursorPos.x - outlinePos.x) * 0.15;
+    outlinePos.y += (cursorPos.y - outlinePos.y) * 0.15;
+    
+    // Apply positions
+    cursorDot.style.transform = `translate(${dotPos.x}px, ${dotPos.y}px)`;
+    cursorOutline.style.transform = `translate(${outlinePos.x}px, ${outlinePos.y}px)`;
+    
+    // Continue animation
+    requestAnimationFrame(animate);
+  }
+  animate(); // Start the animation
+  
+  // Hide cursors when mouse leaves window
+  document.addEventListener('mouseout', () => {
+    cursorDot.style.opacity = '0';
+    cursorOutline.style.opacity = '0';
+  });
+  document.addEventListener('mouseover', () => {
+    cursorDot.style.opacity = '1';
+    cursorOutline.style.opacity = '1';
+  });
+
   const table = document.getElementById('tips-table');
   const tbody = table.tBodies[0];
   let tips = [];
