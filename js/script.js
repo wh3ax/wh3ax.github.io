@@ -22,13 +22,13 @@ document.addEventListener('DOMContentLoaded', async ()=>{
   
   // Smooth animation function
   function animate() {
-    // Smooth following effect for dot
-    dotPos.x += (cursorPos.x - dotPos.x) * 0.2;
-    dotPos.y += (cursorPos.y - dotPos.y) * 0.2;
+    // Faster, more responsive dot movement
+    dotPos.x += (cursorPos.x - dotPos.x) * 0.35;
+    dotPos.y += (cursorPos.y - dotPos.y) * 0.35;
     
     // Slightly delayed following for outline
-    outlinePos.x += (cursorPos.x - outlinePos.x) * 0.15;
-    outlinePos.y += (cursorPos.y - outlinePos.y) * 0.15;
+    outlinePos.x += (cursorPos.x - outlinePos.x) * 0.2;
+    outlinePos.y += (cursorPos.y - outlinePos.y) * 0.2;
     
     // Apply positions
     cursorDot.style.transform = `translate(${dotPos.x}px, ${dotPos.y}px)`;
