@@ -3,190 +3,109 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <meta name="description" content="Online Safety Hub - Comprehensive tips and guidance for children, adults, and families" />
-    <title>Online Safety Hub</title>
-  <link rel="stylesheet" href="/css/styles.css?v=3">
+    <meta name="description" content="Portfolio — Cybersecurity engineer: offensive & defensive, projects, skills and contact." />
+    <title>Will H — Cybersecurity Portfolio</title>
+    <!-- Fonts: readable UI font plus techy heading/mono for vibe -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Orbitron:wght@400;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/styles.css?v=4">
   </head>
   <body>
-    <div class="background-pattern" aria-hidden="true"></div>
+    <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+
     <header class="site-header">
-      <div class="container">
-        <div class="site-hero">
-          <div>
-            <h1>Online Safety Hub</h1>
-            <p class="tagline">Practical tips and guidance to keep children and families safer while using games and chat apps (Roblox, Discord, Fortnite, and more).</p>
-            <p class="hero-sub">Search, filter, and export curated safety tips.</p>
-          </div>
-        </div>
+      <div class="container header-inner">
+        <a class="brand" href="#">Will H</a>
+        <nav class="site-nav">
+          <a href="#about">About</a>
+          <a href="#skills">Skills</a>
+          <a href="#projects">Projects</a>
+          <a href="#contact">Contact</a>
+        </nav>
       </div>
     </header>
 
-    <main class="container">
-      <section class="controls" aria-labelledby="filters-heading">
-        <h2 id="filters-heading">Filter tips</h2>
-        <div class="filters-row">
-          <label class="search">
-            <span class="icon" aria-hidden="true">
-              <!-- magnifying glass -->
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </span>
-            Search
-            <input id="search-input" type="search" placeholder="Search topic, description, actions..." aria-label="Search tips">
-          </label>
-
-          <!-- Risk column removed to keep guidance simple and family-friendly -->
-
-          <label>
-            Category
-            <select id="category-filter" aria-label="Filter by category">
-              <option value="">All</option>
-              <option>Parental</option>
-              <option>Gaming</option>
-              <option>Chat</option>
-              <option>Payments</option>
-              <option>Social</option>
-              <option>Safety</option>
-              <option>Accounts</option>
-              <option>Community</option>
-              <option>Privacy</option>
-            </select>
-            <!-- quick clickable chips for categories (filled by JS) -->
-            <div id="category-chips" class="category-chips" aria-label="Quick category filters"></div>
-          </label>
-
-          <div class="controls-actions">
-            <button id="clear-btn" type="button">Clear</button>
-            <button id="export-btn" type="button">Export JSON</button>
-            <small class="hint">Click table headers to sort</small>
+    <main>
+      <section class="hero">
+        <div class="hero-inner container">
+          <h1 class="hero-title">Will H —  Graduate Cybersecurity Engineer</h1>
+          <p class="hero-sub">Offensive security, blue team tooling, cloud security & automation.</p>
+          <div class="hero-ctas">
+            <a class="btn primary" href="#contact">Contact</a>
+            <a class="btn ghost" href="mailto:wh3axx@gmail.com">Email</a>
+            <a class="btn" href="https://github.com/wh3ax" target="_blank" rel="noopener">GitHub</a>
           </div>
         </div>
       </section>
 
-      <section class="table-wrap">
-        <table id="tips-table" class="tips-table" role="table">
-          <caption class="sr-only">List of online safety tips</caption>
-          <thead>
-            <tr>
-              <th data-key="topic" scope="col" tabindex="0">Topic</th>
-              <th data-key="category" scope="col">Category</th>
-              <th data-key="description" scope="col">Description</th>
-              <th data-key="actions" scope="col">Recommended actions</th>
-              <th data-key="resources" scope="col">Resources</th>
-            </tr>
-          </thead>
-          <tbody>
-            <!-- Static fallback rows (also used while JS loads). These mirror /data/tips.json -->
-            <tr>
-              <td>Parental Controls</td>
-              <td>Parental</td>
-              <td>Use built-in parental controls on consoles, PCs and mobile devices to limit play time and content.</td>
-              <td>Set age-appropriate restrictions, enable content filters, and schedule play hours. Use platform guides (Xbox/PlayStation/Nintendo, Epic).</td>
-              <td><a href="https://www.nspcc.org.uk/keeping-children-safe/online-safety/parental-controls/" target="_blank" rel="noopener">Guide</a></td>
-            </tr>
-            <tr>
-              <td>Account Privacy (Roblox / Fortnite)</td>
-              <td>Gaming</td>
-              <td>Gaming accounts often default to social and friend-based features that expose children to strangers.</td>
-              <td>Set profiles to private, restrict who can message or join games, and disable friend requests from unknown users.</td>
-              <td><a href="https://en.help.roblox.com/hc/en-us/articles/203313410-Privacy-Settings" target="_blank" rel="noopener">Roblox privacy</a></td>
-            </tr>
-            <tr>
-              <td>Voice &amp; Text Chat Safety (Discord, Fortnite)</td>
-              <td>Chat</td>
-              <td>Voice and text chat can expose children to abusive language, strangers, or grooming attempts.</td>
-              <td>Disable voice/text chat for young accounts, use parental controls to limit who can contact your child, and teach them to leave uncomfortable conversations and report users.</td>
-              <td><a href="https://discord.com/safety/360044149811" target="_blank" rel="noopener">Discord safety</a></td>
-            </tr>
-            <tr>
-              <td>In‑App Purchases &amp; Microtransactions</td>
-              <td>Payments</td>
-              <td>Games often include purchases that can lead to accidental spending or pressure to buy.</td>
-              <td>Require a parent password or approval for purchases, disable saved payment methods, and review receipts regularly.</td>
-              <td><a href="https://www.ftc.gov/your-consumer-rights/children-and-consumers" target="_blank" rel="noopener">Consumer tips</a></td>
-            </tr>
-            <tr>
-              <td>Stranger Interaction</td>
-              <td>Social</td>
-              <td>Players may encounter strangers who ask personal questions or try to move conversations off-platform.</td>
-              <td>Teach children not to share personal details (full name, address, school), to block and report suspicious users, and to get a parent's help if pressured.</td>
-              <td><a href="https://www.netsmartzkids.org/" target="_blank" rel="noopener">NetSmartzKids</a></td>
-            </tr>
-            <tr>
-              <td>Screen Time &amp; Balance</td>
-              <td>Parental</td>
-              <td>Excessive play can affect sleep, schoolwork, and social development.</td>
-              <td>Agree on daily/weekly limits, encourage breaks, and keep devices in shared family spaces during younger ages.</td>
-              <td><a href="https://www.commonsensemedia.org/screen-time" target="_blank" rel="noopener">Screen time</a></td>
-            </tr>
-            <tr>
-              <td>Report &amp; Safety Tools</td>
-              <td>Safety</td>
-              <td>Most platforms provide in-app reporting, block features, and safety centers for parents and kids.</td>
-              <td>Familiarize yourself with reporting flows on platforms you use (Roblox, Discord, Epic), save incident details, and escalate to platform support when needed.</td>
-              <td><a href="https://www.saferinternet.org.uk/" target="_blank" rel="noopener">Safer Internet</a></td>
-            </tr>
-            <tr>
-              <td>Account Security for Children</td>
-              <td>Accounts</td>
-              <td>Children's accounts can be targeted or hijacked; recovery can be difficult without parental contact info.</td>
-              <td>Use strong, unique passwords, enable two-factor auth where available, and register recovery email/phone under a parent's account.</td>
-              <td><a href="https://www.getsafeonline.org/" target="_blank" rel="noopener">Account security</a></td>
-            </tr>
-            <tr>
-              <td>Moderation &amp; Community Standards</td>
-              <td>Community</td>
-              <td>Understand each game's moderation level — some communities are heavily moderated while others are not.</td>
-              <td>Choose servers, games, and communities with active moderation, and review community rules before joining.</td>
-              <td><a href="https://www.commonsensemedia.org/" target="_blank" rel="noopener">Community guides</a></td>
-            </tr>
-            <tr>
-              <td>Location &amp; Camera Sharing</td>
-              <td>Privacy</td>
-              <td>Sharing photos or live-streaming can reveal location or identifying details unintentionally.</td>
-              <td>Disable location sharing, avoid posting images showing identifiable places or school uniforms, and review privacy for streaming platforms.</td>
-              <td><a href="https://www.childnet.com/parents-and-carers/" target="_blank" rel="noopener">Childnet</a></td>
-            </tr>
-          </tbody>
-        </table>
+      <section id="about" class="section container">
+        <h2>About</h2>
+        <p>A passionate third year cyber security student at Leeds Beckett University. Previously attending a placement year within the Ministry of Defence. I have developed a large amount of knowledge and experience, working with colleagues within numerous sectors of the cyber-security industry. Working as an Information Assurance Analyst and SOC Analyst, on my university placement, I gained the integral and key knowledge within GRC and work-based experience responding to numerous security incidents within the Ministry of Defence.</p>
       </section>
+
+      <section id="skills" class="section container">
+        <h2>Skills</h2>
+        <div class="skills-grid">
+          <span class="skill">Critical Thinking</span>
+          <span class="skill">Documentational Skills</span>
+          <span class="skill">Governance, Risk, Compliance</span>
+          <span class="skill">Analytical Skills</span>
+          <span class="skill">Operational Knowledge</span>
+          <span class="skill">Network Knowledge</span>
+          <span class="skill">Communication</span>
+          <span class="skill">Project/Onboarding Management</span>
+          <span class="skill">Collaboration Skills</span>
+          <span class="skill">Secure By Design Knowledge</span>
+          <span class="skill">Project Management</span>
+          <span class="skill">Computational Knowledge</span>
+        </div>
+      </section>
+
+      <section id="projects" class="section container">
+        <h2>Conference Attendance</h2>
+        <div class="projects-grid">
+          <article class="project">
+            <h3>Securitay 2023</h3>
+            <p class="muted">Participant</p>
+          </article>
+
+          <article class="project">
+            <h3>Securitay 2024</h3>
+            <p class="muted">Participant</p>
+          </article>
+
+          <article class="project">
+            <h3>Securitay 2025</h3>
+            <p class="muted">Participant</p>
+          </article>
+
+          <article class="project">
+            <h3>Cyber Pathways 2024</h3>
+            <p class="muted">Recruiter (Ministry of Defence)</p>
+          </article>
+
+          <article class="project">
+            <h3>Cyberfirst Pathways Event 2024</h3>
+            <p class="muted">Recruiter (Ministry of Defence)</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="section container">
+        <h2>Contact</h2>
+        <p>I'm open to roles in security engineering, detection, or offensive teams. Email me at <a href="mailto:wh3axx@gmail.com">wh3axx@gmail.com</a> or view my work on <a href="https://github.com/wh3ax" target="_blank" rel="noopener">GitHub</a>.</p>
+        <p class="muted-small"><strong>Resume:</strong> Available on Request</p>
+      </section>
+      
+        <!-- Resume section removed per user request -->
     </main>
 
     <footer class="site-footer">
       <div class="container footer-inner">
-        <div>
-          <h4>About</h4>
-          <p class="small">Online Safety Hub curates actionable tips for parents and children to reduce risks while using popular online apps and games.</p>
-        </div>
-
-        <div>
-          <h4>Resources</h4>
-          <ul>
-            <li><a href="/data/tips.json">Download tips (JSON)</a></li>
-            <li><a href="https://www.commonsensemedia.org/">Common Sense Media</a></li>
-            <li><a href="https://www.saferinternet.org.uk/">UK Safer Internet Centre</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Contact</h4>
-          <ul>
-            <li><a href="mailto:yourname@example.com">yourname@example.com</a></li>
-            <li><a href="https://github.com/wh3ax/wh3ax.github.io">Source on GitHub</a></li>
-          </ul>
-        </div>
-
-        <div>
-          <h4>Legal</h4>
-          <ul>
-            <li class="small">Not legal or professional advice. Use as guidance.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="container" style="padding-top:1rem;">
-        <small class="small">© 2025 — Built for families. Hosted on GitHub Pages.</small>
+        <div>© 2025 — Will H</div>
+        <div><a href="https://github.com/wh3ax/wh3ax.github.io" target="_blank" rel="noopener">Source</a></div>
       </div>
     </footer>
 
-    <script src="/js/script.js?v=3" defer></script>
+    <script src="/js/script.js?v=4" defer></script>
   </body>
 </html>
