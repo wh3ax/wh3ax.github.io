@@ -16,8 +16,6 @@ html,body{height:100%;margin:0;font-family: Inter, system-ui, -apple-system, 'Se
 body{
   background-color: var(--bg);
   background-image:
-    radial-gradient(circle at 50% 38%, rgba(241,170,57,0.18) 0 14%, rgba(241,170,57,0.08) 14% 22%, transparent 22%),
-    radial-gradient(circle at 50% 38%, rgba(255,241,215,0.11) 0 8%, transparent 9%),
     radial-gradient(circle at 18% 20%, rgba(241,170,57,0.10), transparent 25%),
     radial-gradient(circle at 82% 80%, rgba(255,241,215,0.06), transparent 28%),
     linear-gradient(160deg, #040302 0%, #090705 40%, #0b0907 68%, #020202 100%);
