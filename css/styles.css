@@ -15,9 +15,11 @@ html,body{height:100%;margin:0;font-family: Inter, system-ui, -apple-system, 'Se
 /* Layered, animated background: soft gradient, subtle noise and a slow moving sheen */
 body{
   background-color: var(--bg);
-  /* keep minimal layered darkness to allow subtle sheen + grain */
   background-image:
-    linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.00));
+    radial-gradient(circle at 18% 18%, rgba(126,231,135,0.22), transparent 28%),
+    radial-gradient(circle at 82% 14%, rgba(43,211,201,0.18), transparent 24%),
+    radial-gradient(circle at 50% 78%, rgba(126,231,135,0.10), transparent 34%),
+    linear-gradient(160deg, #020407 0%, #040b0c 36%, #03060b 62%, #010204 100%);
   background-blend-mode: normal;
   background-size: cover;
   position:relative;
@@ -28,10 +30,10 @@ body{
 body::after{
   content: '';
   position: fixed;inset:0;pointer-events:none;z-index:0;opacity:0.08;
-  background: linear-gradient(120deg, rgba(255,255,255,0.02), rgba(255,255,255,0.00));
-  transform: translateX(-40%);
-  filter: blur(20px);
-  animation: sheen 18s linear infinite;
+  background: linear-gradient(120deg, rgba(126,231,135,0.05), rgba(43,211,201,0.02), rgba(255,255,255,0.00));
+  transform: translateX(-40%) scale(1.1);
+  filter: blur(26px);
+  animation: sheen 20s linear infinite;
 }
 
 @keyframes sheen{from{transform:translateX(-40%)}to{transform:translateX(60%)}}
@@ -42,7 +44,10 @@ body::after{
 body::before{
   content: '';
   position: fixed;inset:0;pointer-events:none;z-index:0;opacity:0.04;
-  background-image: radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
+  background-image:
+    radial-gradient(circle at 22% 22%, rgba(126,231,135,0.09), transparent 0 18%, transparent 19%),
+    radial-gradient(circle at 78% 24%, rgba(43,211,201,0.08), transparent 0 16%, transparent 17%),
+    radial-gradient(rgba(255,255,255,0.02) 1px, transparent 1px);
   background-size: 3px 3px;
 }
 
