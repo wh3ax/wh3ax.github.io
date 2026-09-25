@@ -35,9 +35,29 @@ document.addEventListener('DOMContentLoaded', () => {
     c.style.transition = 'opacity 420ms ease, transform 420ms ease';
     io.observe(c);
   });
+
+  const codeFlash = document.querySelector('.code-flash');
+  const payloads = [
+    'auth.service :: handshake complete\n> AES-256 // tunnel stable',
+    'root@wh3ax:~$ nmap -sV 10.0.0.1\nPORT 443/tcp OPEN // encrypted',
+    'SIG_CHECK: 0x7F3A9C\nFIREWALL STATUS :: ACTIVE',
+    'packet.route = ["secure", "obscured", "verified"]\nstatus: ONLINE'
+  ];
+
+  function flashCode() {
+    if (!codeFlash) return;
+    codeFlash.textContent = payloads[Math.floor(Math.random() * payloads.length)];
+    codeFlash.classList.remove('is-active');
+    void codeFlash.offsetWidth;
+    codeFlash.classList.add('is-active');
+    window.setTimeout(() => codeFlash.classList.remove('is-active'), 1800);
+    window.setTimeout(flashCode, 6500 + Math.random() * 7000);
+  }
+
+  window.setTimeout(flashCode, 2200);
 });
 
-// Starfield / constellation background
+// Digital signal particles for the cyber background
 (function starfield(){
   const canvas = document.getElementById('starfield-canvas');
   if (!canvas) return;
@@ -47,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let h = canvas.height = window.innerHeight;
 
   const stars = [];
-  const STAR_COUNT = Math.floor((w * h) / 12000); // density
+  const STAR_COUNT = Math.floor((w * h) / 18000);
 
   function rand(min, max){ return Math.random() * (max - min) + min }
 
@@ -57,7 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
       stars.push({
         x: Math.random() * w,
         y: Math.random() * h,
-        r: rand(0.6, 1.8),
+        r: rand(0.5, 1.4),
         baseAlpha: rand(0.15, 0.9),
         phase: Math.random() * Math.PI * 2,
         speed: rand(0.002, 0.012)
@@ -78,23 +98,23 @@ document.addEventListener('DOMContentLoaded', () => {
   let cometTimer = rand(8000, 16000);
   function draw(t){
     ctx.clearRect(0,0,w,h);
-    // draw stars
+    // draw dim signal particles and occasional data streaks
     for (const s of stars){
-      const a = s.baseAlpha + Math.sin(s.phase + t * s.speed) * 0.45 * s.baseAlpha;
+      const a = s.baseAlpha + Math.sin(s.phase + t * s.speed) * 0.35 * s.baseAlpha;
       ctx.beginPath();
-      ctx.fillStyle = `rgba(255,246,230,${Math.max(0, Math.min(1, a))})`;
+      ctx.fillStyle = `rgba(109,255,240,${Math.max(0, Math.min(1, a))})`;
       ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
       ctx.fill();
       s.phase += 0.002 + s.speed * 0.5;
     }
 
-    // shooting star logic
+    // occasional data streak
     shootTimer -= 16.6; // approx per-frame
     if (shootTimer <= 0){
       launchShootingStar();
       shootTimer = rand(4000, 14000);
     }
-    // comet timer
+    // brighter green signal streak
     cometTimer -= 16.6;
     if (cometTimer <= 0){
       launchComet();
@@ -107,8 +127,8 @@ document.addEventListener('DOMContentLoaded', () => {
         ss.x += ss.vx; ss.y += ss.vy; ss.life -= 1;
         ctx.beginPath();
         const grad = ctx.createLinearGradient(ss.x, ss.y, ss.x-ss.vx*10, ss.y-ss.vy*10);
-        grad.addColorStop(0, 'rgba(255,240,210,0.98)');
-        grad.addColorStop(1, 'rgba(255,240,210,0)');
+        grad.addColorStop(0, 'rgba(184,255,61,0.98)');
+        grad.addColorStop(1, 'rgba(184,255,61,0)');
         ctx.strokeStyle = grad;
         ctx.lineWidth = ss.width;
         ctx.beginPath();
@@ -128,9 +148,9 @@ document.addEventListener('DOMContentLoaded', () => {
         const tx = c.x - c.vx * 8;
         const ty = c.y - c.vy * 8;
         const grad = ctx.createLinearGradient(c.x, c.y, tx, ty);
-        grad.addColorStop(0, 'rgba(255,247,228,0.96)');
-        grad.addColorStop(0.3, 'rgba(241,170,57,0.62)');
-        grad.addColorStop(1, 'rgba(241,170,57,0)');
+        grad.addColorStop(0, 'rgba(109,255,240,0.96)');
+        grad.addColorStop(0.3, 'rgba(0,255,170,0.62)');
+        grad.addColorStop(1, 'rgba(0,255,170,0)');
         ctx.strokeStyle = grad;
         ctx.lineWidth = c.width;
         ctx.beginPath();
@@ -139,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.stroke();
         // head
         ctx.beginPath();
-        ctx.fillStyle = 'rgba(255,247,228,0.95)';
+        ctx.fillStyle = 'rgba(109,255,240,0.95)';
         ctx.arc(c.x, c.y, c.r, 0, Math.PI*2);
         ctx.fill();
         if (c.life <= 0 || c.x < -80 || c.x > w+80 || c.y < -80 || c.y > h+80) starfield.comets.splice(i,1);
